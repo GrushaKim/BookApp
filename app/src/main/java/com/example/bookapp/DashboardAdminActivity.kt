@@ -55,15 +55,14 @@ class DashboardAdminActivity : AppCompatActivity() {
         }
 
         // add new category button click
-        binding.addCategoryBtn.setOnClickListener {
-            startActivity(Intent(this, PdfAddActivity::class.java))
-        }
-
-        // add pdf button click
-        binding.addPdfFab.setOnClickListener{
+        binding.addCategoryBtn.setOnClickListener{
             startActivity(Intent(this, CategoryAddActivity::class.java))
         }
 
+        // add pdf button click
+        binding.addPdfFab.setOnClickListener {
+            startActivity(Intent(this, PdfAddActivity::class.java))
+        }
     }
 
     private fun loadCategories() {
