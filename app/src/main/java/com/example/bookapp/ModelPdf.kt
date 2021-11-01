@@ -14,6 +14,7 @@ class ModelPdf{
 
     // constructor
     constructor()
+    // parameterized constructor
     constructor(
         uid: String,
         id: String,
@@ -35,7 +36,4 @@ class ModelPdf{
         this.viewCnt = viewCnt
         this.downloadCnt = downloadCnt
     }
-
-    // parameterized constructor
-
 }

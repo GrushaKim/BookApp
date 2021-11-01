@@ -1,11 +1,14 @@
 package com.example.bookapp
 
 import android.app.Application
+import android.app.ProgressDialog
+import android.content.Context
 import android.text.format.DateFormat
 import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import com.github.barteksc.pdfviewer.PDFView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -40,17 +43,18 @@ class MyApplication: Application() {
                     val kb = bytes/1024
                     val mb = kb/1024
                     if(mb>=1){
-                        sizeTv.text = "${String.format("$.2f", mb)} MB"
+                        sizeTv.text = "${String.format("%.2f", mb)} MB"
                     }else if(kb>=1){
-                        sizeTv.text = "${String.format("$.2f", kb)} KB"
+                        sizeTv.text = "${String.format("%.2f", kb)} KB"
                     }else {
-                        sizeTv.text = "${String.format("$.2f", bytes)} bytes"
+                        sizeTv.text = "${String.format("%.2f", bytes)} bytes"
                     }
                 }
                 .addOnFailureListener{ e ->
                     Log.d(TAG, "loadPdfSize: Failed to get metadata, ERROR: ${e.message}")
                 }
         }
+
         // get the file and its metadata from firebase storage with uri
         fun loadPdfFromUrlSinglePage(
             pdfUrl: String,
@@ -81,17 +85,20 @@ class MyApplication: Application() {
                             Log.d(TAG, "loadPdfFromUrlSinglePage: ${t.message}")
                         }
                         .onLoad { nbPages ->
+                            Log.d(TAG, "loadPdfFromUrlSinglePage: pages - $nbPages")
                             progressBar.visibility = View.INVISIBLE
                             // if pagesTv param is not null
                             if(pagesTv != null){
                                 pagesTv.text = "$nbPages"
                             }
                         }
+                        .load()
                 }
                 .addOnFailureListener{ e ->
                     Log.d(TAG, "loadPdfSize: Failed to get metadata, ERROR: ${e.message}")
                 }
         }
+
         // get category title with categoryId
         fun loadCategory(categoryId: String, categoryTv: TextView){
             val ref = FirebaseDatabase.getInstance().getReference("Categories")
@@ -109,6 +116,47 @@ class MyApplication: Application() {
             )
 
         }
+
+        fun deleteBook(context: Context, bookId: String, bookUrl: String, bookTitle: String){
+            val TAG = "DELETE_BOOK_TAG"
+            Log.d(TAG, "deleteBook: deleting the selected book")
+
+            val progressDialog = ProgressDialog(context)
+            progressDialog.setTitle("please wait")
+            progressDialog.setMessage("Deleting $bookTitle")
+            progressDialog.setCanceledOnTouchOutside(false)
+            progressDialog.show()
+
+            Log.d(TAG, "deleteBook: deleting from firebase storage")
+            val storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(bookUrl)
+            storageReference.delete()
+                .addOnSuccessListener {
+                    Log.d(TAG, "deleteBook: deleted from firebase storage")
+                    // additionally remove from realtime db
+                    Log.d(TAG, "deleteBook: deleting from firebase db")
+                    val ref = FirebaseDatabase.getInstance().getReference("Books")
+                    ref.child(bookId)
+                        .removeValue()
+                        .addOnSuccessListener {
+                            progressDialog.dismiss()
+                            Log.d(TAG, "deleteBook: deleted from db.")
+                            Toast.makeText(
+                                context, "deleteBook: deleted from db", Toast.LENGTH_SHORT).show()
+                        }
+                        .addOnFailureListener { e ->
+                            progressDialog.dismiss()
+                            Log.d(TAG, "deleteBook: failed to delete from db. Error: ${e.message}")
+                            Toast.makeText(
+                                context, "deleteBook: failed to delete from db. Error: \${e.message}", Toast.LENGTH_SHORT).show()
+                        }
+                }
+                .addOnFailureListener { e ->
+                    Log.d(TAG, "deleteBook: failed to delete from storage. Error: ${e.message}")
+                    Toast.makeText(
+                        context, "deleteBook: failed to delete from storage. Error: \${e.message}", Toast.LENGTH_SHORT).show()
+                }
+        }
+
     }
 
 }

@@ -3,13 +3,16 @@
     package="com.example.bookapp">
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:name=".MyApplication"
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
+        <activity
+            android:name=".PdfEditActivity"
+            android:exported="true" />
         <activity
             android:name=".PdfListAdminActivity"
             android:exported="true" />
