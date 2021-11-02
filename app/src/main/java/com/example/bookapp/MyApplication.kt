@@ -36,9 +36,11 @@ class MyApplication: Application() {
 
             val ref = FirebaseStorage.getInstance().getReferenceFromUrl(pdfUrl)
             ref.metadata
-                .addOnSuccessListener{
+                .addOnSuccessListener{ sm ->
                     Log.d(TAG, "loadPdfSize: get metadata")
-                    val bytes = StorageMetadata().sizeBytes.toDouble()
+//                    val bytes = StorageMetadata().sizeBytes.toDouble()
+//                    val bytes = storageMetadata.sizeBytes().toDouble()
+                    val bytes = sm.sizeBytes.toDouble()
                     Log.d(TAG, "loadPdfSize: Size Bytes $bytes")
                     val kb = bytes/1024
                     val mb = kb/1024
@@ -157,6 +159,32 @@ class MyApplication: Application() {
                 }
         }
 
+        // increase view count +1
+        fun incrementBookViewCount(bookId: String){
+            // get the current view count
+            val ref = FirebaseDatabase.getInstance().getReference("Books")
+            ref.child(bookId)
+                .addListenerForSingleValueEvent(object: ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        var viewCnt = "${snapshot.child("viewCnt").value}"
+                        if(viewCnt=="" || viewCnt=="null"){
+                            viewCnt = "0";
+                        }
+                        // increase
+                        val newViewCnt = viewCnt.toLong() +1
+                        // setup data to update
+                        val hashMap = HashMap<String, Any>()
+                        hashMap["viewCnt"] = newViewCnt
+                        // update to db
+                        val dbRef = FirebaseDatabase.getInstance(). getReference("Books")
+                        dbRef.child(bookId)
+                            .updateChildren(hashMap)
+                    }
+                    override fun onCancelled(error: DatabaseError) {
+                    }
+                })
+
+        }
     }
 
 }
