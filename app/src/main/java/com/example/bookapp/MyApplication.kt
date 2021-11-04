@@ -168,7 +168,7 @@ class MyApplication: Application() {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         var viewCnt = "${snapshot.child("viewCnt").value}"
                         if(viewCnt=="" || viewCnt=="null"){
-                            viewCnt = "0";
+                            viewCnt = "0"
                         }
                         // increase
                         val newViewCnt = viewCnt.toLong() +1
@@ -185,6 +185,9 @@ class MyApplication: Application() {
                 })
 
         }
+
+        // increase download count +1
+
     }
 
 }

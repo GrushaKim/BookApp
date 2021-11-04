@@ -38,13 +38,15 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@id/bookOptionsLl"
         android:layout_below="@+id/toolbarRl"
         android:padding="10dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-        <!--Book Info-->
+            <!--Book Info-->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -55,16 +57,16 @@
                     android:layout_height="170dp"
                     android:layout_marginEnd="5dp"
                     android:background="@color/gray02">
-                <!--PDFView-->
-                <com.github.barteksc.pdfviewer.PDFView
-                    android:id="@+id/pdfView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-                <!--Progress-->
-                <ProgressBar
-                    android:id="@+id/progressBar"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    <!--PDFView-->
+                    <com.github.barteksc.pdfviewer.PDFView
+                        android:id="@+id/pdfView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                    <!--Progress-->
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
                 </RelativeLayout>
 
                 <!--Title-->
@@ -74,8 +76,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@+id/pdfRl"
-                    android:textSize="18sp"
-                    android:text="Book title"/>
+                    android:text="Book title"
+                    android:textSize="18sp" />
 
                 <!--Table-->
                 <TableLayout
@@ -90,122 +92,117 @@
                             android:id="@+id/categoryLbTv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Category"
-                            android:layout_marginEnd="5dp"/>
+                            android:layout_marginEnd="5dp"
+                            android:text="Category" />
                         <!--Category-->
                         <TextView
                             android:id="@+id/categoryTv"
-                            android:layout_weight="1"
+                            style="@style/TextAppearance.MaterialComponents.Caption"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
-                            android:text="N/A"
-                            android:layout_marginEnd="5dp"/>
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:text="N/A" />
                     </TableRow>
 
                     <!--Date Row-->
-                    <TableRow
-                        android:layout_marginTop="5dp">
+                    <TableRow android:layout_marginTop="5dp">
                         <!--Date Label-->
                         <TextView
                             android:id="@+id/dateLbTv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Date"
-                            android:layout_marginEnd="5dp"/>
+                            android:layout_marginEnd="5dp"
+                            android:text="Date" />
                         <!--Date-->
                         <TextView
                             android:id="@+id/dateTv"
-                            android:layout_weight="1"
+                            style="@style/TextAppearance.MaterialComponents.Caption"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
-                            android:text="N/A"
-                            android:layout_marginEnd="5dp"/>
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:text="N/A" />
                     </TableRow>
 
                     <!--Size Row-->
-                    <TableRow
-                        android:layout_marginTop="5dp">
+                    <TableRow android:layout_marginTop="5dp">
                         <!--Size Label-->
                         <TextView
                             android:id="@+id/sizeLbTv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Size"
-                            android:layout_marginEnd="5dp"/>
+                            android:layout_marginEnd="5dp"
+                            android:text="Size" />
                         <!--Size-->
                         <TextView
                             android:id="@+id/sizeTv"
-                            android:layout_weight="1"
+                            style="@style/TextAppearance.MaterialComponents.Caption"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
-                            android:text="N/A"
-                            android:layout_marginEnd="5dp"/>
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:text="N/A" />
                     </TableRow>
 
                     <!--View Count Row-->
-                    <TableRow
-                        android:layout_marginTop="5dp">
+                    <TableRow android:layout_marginTop="5dp">
                         <!--Size Label-->
                         <TextView
                             android:id="@+id/viewCntLbTv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Views"
-                            android:layout_marginEnd="5dp"/>
+                            android:layout_marginEnd="5dp"
+                            android:text="Views" />
                         <!--Size-->
                         <TextView
                             android:id="@+id/viewCntTv"
-                            android:layout_weight="1"
+                            style="@style/TextAppearance.MaterialComponents.Caption"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
-                            android:text="N/A"
-                            android:layout_marginEnd="5dp"/>
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:text="N/A" />
                     </TableRow>
 
                     <!--Download Count Row-->
-                    <TableRow
-                        android:layout_marginTop="5dp">
+                    <TableRow android:layout_marginTop="5dp">
                         <!--Size Label-->
                         <TextView
                             android:id="@+id/downloadLbTv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Downloads"
-                            android:layout_marginEnd="5dp"/>
+                            android:layout_marginEnd="5dp"
+                            android:text="Downloads" />
                         <!--Size-->
                         <TextView
                             android:id="@+id/downloadTv"
-                            android:layout_weight="1"
+                            style="@style/TextAppearance.MaterialComponents.Caption"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
-                            android:text="N/A"
-                            android:layout_marginEnd="5dp"/>
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:text="N/A" />
                     </TableRow>
 
                     <!-- Page Numbers Row-->
-                    <TableRow
-                        android:layout_marginTop="5dp">
+                    <TableRow android:layout_marginTop="5dp">
                         <!--Size Label-->
                         <TextView
                             android:id="@+id/pagesLbTv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Pages"
-                            android:layout_marginEnd="5dp"/>
+                            android:layout_marginEnd="5dp"
+                            android:text="Pages" />
                         <!--Size-->
                         <TextView
                             android:id="@+id/pagesTv"
-                            android:layout_weight="1"
+                            style="@style/TextAppearance.MaterialComponents.Caption"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            style="@style/TextAppearance.MaterialComponents.Caption"
-                            android:text="N/A"
-                            android:layout_marginEnd="5dp"/>
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:text="N/A" />
                     </TableRow>
 
                 </TableLayout>
@@ -219,9 +216,35 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Description"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
 
         </LinearLayout>
     </ScrollView>
+
+    <!--Book Options-->
+    <LinearLayout
+        android:id="@+id/bookOptionsLl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:background="@color/design_default_color_primary">
+        <!--Read Button-->
+        <Button
+            android:id="@+id/readBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Read"
+            android:drawableTop="@drawable/ic_book_white"
+            android:layout_weight="1"/>
+        <!--Download Button-->
+        <Button
+            android:id="@+id/downloadBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Download"
+            android:drawableTop="@drawable/ic_download_white"
+            android:layout_weight="1"/>
+    </LinearLayout>
 
 </RelativeLayout>
