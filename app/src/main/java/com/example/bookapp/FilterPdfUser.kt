@@ -8,7 +8,7 @@ class FilterPdfUser: Filter {
     // adapter
     var adapterPdfUser: AdapterPdfUser
 
-    constructor(filterList: ArrayList<Any>, adapterPdfUser: AdapterPdfUser) : super() {
+    constructor(filterList: ArrayList<ModelPdf>, adapterPdfUser: AdapterPdfUser) : super() {
         this.filterList = filterList
         this.adapterPdfUser = adapterPdfUser
     }

@@ -22,6 +22,7 @@
         <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/drawable/tab_background_selected.xml" value="0.2" />
         <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/drawable/tab_background_unselected.xml" value="0.10277777777777777" />
         <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/drawable/tab_selector.xml" value="0.1" />
+        <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/layout/activity_books_user_fragment.xml" value="0.1" />
         <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/layout/activity_category_add.xml" value="0.2" />
         <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/layout/activity_dashboard_admin.xml" value="0.2" />
         <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/layout/activity_dashboard_user.xml" value="0.2" />
@@ -35,6 +36,7 @@
         <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/layout/activity_pdf_view.xml" value="0.2" />
         <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/layout/activity_register.xml" value="0.2" />
         <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/layout/activity_splash.xml" value="0.16" />
+        <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/layout/fragment_books_user.xml" value="0.2" />
         <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/layout/row_category.xml" value="0.2" />
         <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/layout/row_pdf_admin.xml" value="0.2" />
         <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/layout/row_pdf_user.xml" value="0.2" />

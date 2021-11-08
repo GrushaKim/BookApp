@@ -59,9 +59,9 @@
 
     <!--View Pager-->
     <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-
+        android:layout_below="@+id/tabLayout"/>
 
 </RelativeLayout>

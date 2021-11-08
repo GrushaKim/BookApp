@@ -5,21 +5,28 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bookapp.databinding.RowPdfUserBinding
 
-class AdapterPdfUser: RecyclerView.Adapter<AdapterPdfUser.HolderPdfUser> {
+class AdapterPdfUser: RecyclerView.Adapter<AdapterPdfUser.HolderPdfUser>, Filterable{
 
     //context
     private var context: Context
     //arrayList to hold pdfs
     var pdfArrayList: ArrayList<ModelPdf>
+    //arraylist for filtering
+    var filterList: ArrayList<ModelPdf>
     //viewBinding for row_pdf_user.xml
     private lateinit var binding: RowPdfUserBinding
+
+    private var filter: FilterPdfUser? = null
 
     constructor(context: Context, pdfArrayList: ArrayList<ModelPdf>) {
         this.context = context
         this.pdfArrayList = pdfArrayList
+        this.filterList = pdfArrayList
     }
     //inflater
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderPdfUser {
@@ -60,6 +67,14 @@ class AdapterPdfUser: RecyclerView.Adapter<AdapterPdfUser.HolderPdfUser> {
     override fun getItemCount(): Int {
         return pdfArrayList.size
     }
+
+    override fun getFilter(): Filter {
+        if(filter == null){
+            filter = FilterPdfUser(filterList, this)
+        }
+        return filter as FilterPdfUser
+    }
+
     //ViewHolder for row_pdf_user.xml
     inner class HolderPdfUser(itemView: View): RecyclerView.ViewHolder(itemView){
         //init UI components
@@ -71,6 +86,8 @@ class AdapterPdfUser: RecyclerView.Adapter<AdapterPdfUser.HolderPdfUser> {
         var sizeTv = binding.sizeTv
         var dateTv = binding.dateTv
     }
+
+
 
 
 }
