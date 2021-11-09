@@ -58,6 +58,7 @@ class PdfDetailActivity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         if(firebaseAuth.currentUser != null){
             //check if the book is favorite of the current user
+            checkIsFavorite()
         }
 
         //back button click
