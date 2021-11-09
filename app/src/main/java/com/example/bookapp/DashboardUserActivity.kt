@@ -159,7 +159,7 @@ class DashboardUserActivity : AppCompatActivity() {
         if(firebaseUser == null){
             binding.subtitleTv.text = "Guest"
         }else{
-            // put the email of the currentuser on the toolbar
+            // put the email of the current user on the toolbar
             val email = firebaseUser.email
             binding.subtitleTv.text = email
         }
