@@ -1,10 +1,9 @@
-package com.example.bookapp
+package com.example.bookapp.activities
 
 import android.app.AlertDialog
 import android.app.ProgressDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.renderscript.Sampler
 import android.util.Log
 import android.widget.Toast
 import com.example.bookapp.databinding.ActivityPdfEditBinding

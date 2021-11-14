@@ -1,15 +1,17 @@
-package com.example.bookapp
+package com.example.bookapp.activities
 
-import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.example.bookapp.BooksUserFragment
 import com.example.bookapp.databinding.ActivityDashboardUserBinding
+import com.example.bookapp.models.ModelCategory
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -25,6 +27,7 @@ class DashboardUserActivity : AppCompatActivity() {
     private lateinit var categoryArrayList: ArrayList<ModelCategory>
     //
     private lateinit var viewPagerAdater: ViewPagerAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +46,11 @@ class DashboardUserActivity : AppCompatActivity() {
             firebaseAuth.signOut()
             startActivity(Intent(this, MainActivity::class.java))
             finish()
+        }
+
+        // profile button click
+        binding.profileBtn.setOnClickListener{
+            startActivity(Intent(this, ProfileActivity::class.java))
         }
     }
 
@@ -153,15 +161,22 @@ class DashboardUserActivity : AppCompatActivity() {
 
     }
 
-
     private fun checkUser() {
         val firebaseUser = firebaseAuth.currentUser
         if(firebaseUser == null){
             binding.subtitleTv.text = "Guest"
+
+            // hide profile, logout btns
+            binding.profileBtn.visibility = View.GONE
+            binding.logoutBtn.visibility = View.GONE
         }else{
             // put the email of the current user on the toolbar
             val email = firebaseUser.email
             binding.subtitleTv.text = email
+
+            //set profile, logout btns
+            binding.profileBtn.visibility = View.VISIBLE
+            binding.logoutBtn.visibility = View.VISIBLE
         }
     }
 }

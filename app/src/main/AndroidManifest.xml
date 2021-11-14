@@ -15,22 +15,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
         <activity
+            android:name=".activities.ProfileEditActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.ProfileActivity"
+            android:exported="true" />
+        <activity
             android:name=".BooksUserFragment"
             android:exported="true" />
         <activity
-            android:name=".PdfViewActivity"
+            android:name=".activities.PdfViewActivity"
             android:exported="true" />
         <activity
-            android:name=".PdfDetailActivity"
+            android:name=".activities.PdfDetailActivity"
             android:exported="true" />
         <activity
-            android:name=".PdfEditActivity"
+            android:name=".activities.PdfEditActivity"
             android:exported="true" />
         <activity
-            android:name=".PdfListAdminActivity"
+            android:name=".activities.PdfListAdminActivity"
             android:exported="true" />
         <activity
-            android:name=".PdfAddActivity"
+            android:name=".activities.PdfAddActivity"
             android:exported="true" />
         <!--
         <activity
@@ -38,22 +44,22 @@
             android:exported="true" />
         -->
         <activity
-            android:name=".CategoryAddActivity"
+            android:name=".activities.CategoryAddActivity"
             android:exported="true" />
         <activity
-            android:name=".DashboardAdminActivity"
+            android:name=".activities.DashboardAdminActivity"
             android:exported="true" />
         <activity
-            android:name=".DashboardUserActivity"
+            android:name=".activities.DashboardUserActivity"
             android:exported="true" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".activities.LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".activities.RegisterActivity"
             android:exported="true" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".activities.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -61,7 +67,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".activities.MainActivity" />
     </application>
 
 </manifest>

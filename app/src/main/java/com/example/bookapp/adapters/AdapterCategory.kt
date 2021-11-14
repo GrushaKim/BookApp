@@ -1,4 +1,4 @@
-package com.example.bookapp
+package com.example.bookapp.adapters
 
 import android.app.AlertDialog
 import android.content.Context
@@ -8,6 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bookapp.filters.FilterCategory
+import com.example.bookapp.models.ModelCategory
+import com.example.bookapp.activities.PdfListAdminActivity
 import com.example.bookapp.databinding.RowCategoryBinding
 import com.google.firebase.database.FirebaseDatabase
 

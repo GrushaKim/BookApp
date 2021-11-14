@@ -1,4 +1,4 @@
-package com.example.bookapp
+package com.example.bookapp.activities
 
 import android.Manifest
 import android.app.ProgressDialog
@@ -11,6 +11,9 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import com.example.bookapp.Constants
+import com.example.bookapp.MyApplication
+import com.example.bookapp.R
 import com.example.bookapp.databinding.ActivityPdfDetailBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -211,7 +214,12 @@ class PdfDetailActivity : AppCompatActivity() {
                     MyApplication.loadCategory(categoryId, binding.categoryTv)
                     //load thumbnail, pdf count
                     MyApplication.loadPdfFromUrlSinglePage(
-                        "$bookUrl","$bookTitle", binding.pdfView, binding.progressBar, binding.pagesTv)
+                        "$bookUrl",
+                        "$bookTitle",
+                        binding.pdfView,
+                        binding.progressBar,
+                        binding.pagesTv
+                    )
                     //load pdf size
                     MyApplication.loadPdfSize("$bookUrl", "$bookTitle", binding.sizeTv)
 

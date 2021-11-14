@@ -1,12 +1,13 @@
-package com.example.bookapp
+package com.example.bookapp.activities
 
-import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import com.example.bookapp.adapters.AdapterCategory
 import com.example.bookapp.databinding.ActivityDashboardAdminBinding
+import com.example.bookapp.models.ModelCategory
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -62,6 +63,11 @@ class DashboardAdminActivity : AppCompatActivity() {
         // add pdf button click
         binding.addPdfFab.setOnClickListener {
             startActivity(Intent(this, PdfAddActivity::class.java))
+        }
+
+        // profile button click
+        binding.profileBtn.setOnClickListener{
+            startActivity(Intent(this, ProfileActivity::class.java))
         }
     }
 
