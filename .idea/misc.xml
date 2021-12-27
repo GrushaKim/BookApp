@@ -16,7 +16,9 @@
         <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/drawable-v24/sahpe_button03.xml" value="0.12135416666666667" />
         <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/drawable-v24/shape_button01.xml" value="0.15648148148148147" />
         <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/drawable-v24/shape_button03.xml" value="0.19662921348314608" />
+        <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/drawable/dialog_comment_add.xml" value="0.1" />
         <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/drawable/shape_edittext01.xml" value="0.1" />
+        <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/drawable/shape_rect.xml" value="0.1" />
         <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/drawable/shape_rect01.xml" value="0.17592592592592593" />
         <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/drawable/shape_toolbar01.xml" value="0.1" />
         <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/drawable/shape_toolbar02.xml" value="0.1" />
@@ -39,10 +41,11 @@
         <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/layout/activity_profile_edit.xml" value="0.13949275362318841" />
         <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/layout/activity_register.xml" value="0.2" />
         <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/layout/activity_splash.xml" value="0.16" />
-        <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/layout/fragment_books_user.xml" value="0.2" />
+        <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/layout/dialog_comment_add.xml" value="0.2" />
+        <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/layout/fragment_books_user.xml" value="0.18048780487804877" />
         <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/layout/row_category.xml" value="0.2" />
         <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/layout/row_pdf_admin.xml" value="0.2" />
-        <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/layout/row_pdf_user.xml" value="0.2" />
+        <entry key="..\:/Users/viols/AndroidStudioProjects/BookApp/app/src/main/res/layout/row_pdf_user.xml" value="0.17535545023696683" />
       </map>
     </option>
   </component>
