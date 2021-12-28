@@ -5,11 +5,11 @@ class ModelComment {
     var bookId: String = ""
     var comment: String = ""
     var id: String = ""
-    var timestamp: Long = 0
+    var timestamp: String = ""
     var uid: String = ""
 
     constructor(){}
-    constructor(bookId: String, comment: String, id: String, timestamp: Long, uid: String) {
+    constructor(bookId: String, comment: String, id: String, timestamp: String, uid: String) {
         this.bookId = bookId
         this.comment = comment
         this.id = id

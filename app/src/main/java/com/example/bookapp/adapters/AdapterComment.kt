@@ -1,9 +1,11 @@
 package com.example.bookapp.adapters
 
+import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.bookapp.MyApplication
@@ -40,6 +42,9 @@ class AdapterComment: RecyclerView.Adapter<AdapterComment.HolderComment> {
     }
 
     override fun onBindViewHolder(holder: HolderComment, position: Int) {
+        //init auth
+        firebaseAuth = FirebaseAuth.getInstance()
+
         //get data
         val model = commentArrayList[position]
         val date = MyApplication.formatTimeStamp(model.timestamp.toLong())
@@ -52,25 +57,43 @@ class AdapterComment: RecyclerView.Adapter<AdapterComment.HolderComment> {
         //delete comment
         holder.itemView.setOnClickListener {
             //check if the user logged in and matches the writer of the comment
-          if(firebaseAuth.currentUser != null && firebaseAuth.uid == model.uid){
+          if(firebaseAuth.currentUser != null && firebaseAuth.currentUser!!.uid == model.uid){
                 deleteCommentDialog(model, holder)
-          }else{
-              
+          }else if(firebaseAuth.currentUser == null){
+              Toast.makeText(context, "Please log in", Toast.LENGTH_SHORT).show()
+          }else if(firebaseAuth.currentUser!!.uid != model.uid){
+              Toast.makeText(context, "The comment made by another user", Toast.LENGTH_SHORT).show()
           }
         }
-
-
     }
 
     private fun deleteCommentDialog(model: ModelComment, holder: AdapterComment.HolderComment) {
-
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("Delete comment")
+            .setMessage("Do you want to delete this comment?")
+            .setPositiveButton("Delete"){ dialog, e ->
+                dialog.dismiss()
+                //delete from DB
+                val ref = FirebaseDatabase.getInstance().getReference("Books")
+                ref.child(model.bookId).child("comments").child(model.id)
+                    .removeValue()
+                    .addOnSuccessListener {
+                     Toast.makeText(context, "Deleted your comment.", Toast.LENGTH_SHORT).show()
+                    }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(context, "Failed to delete comment. Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                    }
+            }
+            .setNegativeButton("Cancel"){dialog, e ->
+                dialog.dismiss()
+            }
+            .show()
     }
 
     private fun loadUserDetails(model: ModelComment, holder: AdapterComment.HolderComment) {
-        val uid = model.uid
         val ref = FirebaseDatabase.getInstance().getReference("Users")
 
-        ref.child(uid)
+        ref.child(model.uid)
             .addListenerForSingleValueEvent(object: ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     //get data
