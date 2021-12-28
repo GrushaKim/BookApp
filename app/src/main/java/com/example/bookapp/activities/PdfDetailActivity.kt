@@ -1,6 +1,7 @@
 package com.example.bookapp.activities
 
 import android.Manifest
+import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -8,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
+import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
@@ -15,6 +17,7 @@ import com.example.bookapp.Constants
 import com.example.bookapp.MyApplication
 import com.example.bookapp.R
 import com.example.bookapp.databinding.ActivityPdfDetailBinding
+import com.example.bookapp.databinding.DialogCommentAddBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -105,6 +108,75 @@ class PdfDetailActivity : AppCompatActivity() {
                 }
             }
         }
+
+        //add comment click
+        binding.addCommentBtn.setOnClickListener {
+            //check login status
+            if(firebaseAuth.currentUser == null){
+                Toast.makeText(this, "You're not logged in", Toast.LENGTH_SHORT).show()
+            }else{
+               addCommentDialog()
+            }
+        }
+    }
+
+    private var comment = ""
+
+    private fun addCommentDialog() {
+        //inflate dialog_comment_add.xml
+        val commentAddBinding = DialogCommentAddBinding.inflate(LayoutInflater.from(this))
+
+        //setup alert dialog w transparent bg
+        val builder = AlertDialog.Builder(this, R.style.customDialog)
+        builder.setView(commentAddBinding.root)
+
+        val alertDialog = builder.create()
+        alertDialog.show()
+
+        commentAddBinding.backBtn.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+        // add comment to DB
+        commentAddBinding.submitBtn.setOnClickListener {
+            comment = commentAddBinding.commentEt.text.toString().trim()
+            if(comment.isEmpty()){
+                Toast.makeText(this, "Leave your comment!", Toast.LENGTH_SHORT).show()
+            }else{
+                alertDialog.dismiss()
+                addComment()
+            }
+        }
+    }
+
+    private fun addComment() {
+        //progress
+        progressDialog.setMessage("Adding comment")
+        progressDialog.show()
+
+        //set data
+        val timestamp = "${System.currentTimeMillis()}"
+        val hashMap = HashMap<String, Any>()
+        hashMap["id"] = "$timestamp"
+        hashMap["bookId"] = "$bookId"
+        hashMap["timestamp"] = "$timestamp"
+        hashMap["comment"] = "$comment"
+        hashMap["uid"] = "${firebaseAuth.uid}"
+
+        //update to DB
+        val ref = FirebaseDatabase.getInstance().getReference("Books")
+        ref.child(bookId).child("comments").child(timestamp)
+            .setValue(hashMap)
+            .addOnSuccessListener {
+                progressDialog.dismiss()
+                Toast.makeText(this, "Comment has been added", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { e ->
+                progressDialog.dismiss()
+                Toast.makeText(this, "failed to add comment. Error: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+
+
     }
 
     private val requestStoragePermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()){ isGranted: Boolean ->

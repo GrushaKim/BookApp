@@ -22,10 +22,22 @@
 
     </style>
 
+    <!--Rounded Corners for ImageView-->
     <style name="styleRoundedCornersImage">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">20%</item>
     </style>
 
+    <!--Transparent BG for Dialog-->
+    <style name="customDialog" parent="android:Theme.Dialog">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <!--Circle Shape for ImageView-->
+    <style name="styleCircleImage">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">%50%</item>
+    </style>
 
 </resources>

@@ -250,6 +250,14 @@
                     android:padding="10dp"
                     android:layout_alignParentEnd="true"/>
 
+                <!--Comments RecyclerView-->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/commentsRv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/addCommentBtn"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/row_comment"
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>
